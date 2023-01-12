@@ -9,6 +9,7 @@
 
 #include <asm/desc.h>
 #include <asm/fpu/api.h>
+#include <asm/ibt.h>
 
 /*
  * Image of the saved processor state, used by the low level ACPI suspend to
@@ -60,5 +61,8 @@ struct saved_context {
 /* routines for saving/restoring kernel state */
 extern char core_restore_code[];
 extern char restore_registers[];
+
+#define restore_processor_state restore_processor_state
+extern __noendbr void restore_processor_state(void);
 
 #endif /* _ASM_X86_SUSPEND_64_H */

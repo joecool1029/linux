@@ -288,7 +288,7 @@ static __always_inline void __restore_processor_state(struct saved_context *ctxt
 }
 
 /* Needed by apm.c */
-void noinstr restore_processor_state(void)
+void __noendbr noinstr restore_processor_state(void)
 {
 	__restore_processor_state(&saved_context);
 }

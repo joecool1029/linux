@@ -9,6 +9,7 @@
 #include <linux/mm.h>
 #include <linux/freezer.h>
 #include <asm/errno.h>
+#include <asm/suspend.h>
 
 #ifdef CONFIG_VT
 extern void pm_set_vt_switch(int);
@@ -483,7 +484,10 @@ extern struct mutex system_transition_mutex;
 
 #ifdef CONFIG_PM_SLEEP
 void save_processor_state(void);
+
+#ifndef restore_processor_state
 void restore_processor_state(void);
+#endif
 
 /* kernel/power/main.c */
 extern int register_pm_notifier(struct notifier_block *nb);

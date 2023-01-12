@@ -23,6 +23,10 @@
 #include <asm/frame.h>
 #include <asm/nospec-branch.h>
 
+.pushsection .discard.noendbr
+.quad	restore_processor_state
+.popsection
+
 	 /* code below belongs to the image kernel */
 	.align PAGE_SIZE
 SYM_FUNC_START(restore_registers)
